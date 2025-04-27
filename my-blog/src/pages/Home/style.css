@@ -3,31 +3,92 @@
   display: flex;
   align-items: center;
   padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 背景动态效果 */
+.home-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 10% 10%, rgba(97, 218, 251, 0.05), transparent 30%),
+    radial-gradient(circle at 90% 90%, rgba(187, 134, 252, 0.05), transparent 30%),
+    var(--bg-primary);
+  z-index: -1;
+}
+
+/* 动态格子背景 */
+.grid-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: 50px 50px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  z-index: -1;
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
+  position: relative;
+  z-index: 1;
 }
 
 .hero-content {
   margin-bottom: 4rem;
+  opacity: 0;
+  animation: fadeIn 0.8s ease forwards, slideInUp 0.8s ease forwards;
 }
 
 .hero-content h1 {
-  font-size: 3rem;
+  font-size: 3.5rem;
   margin-bottom: 1rem;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
 }
 
 .highlight {
-  color: #4a90e2;
+  position: relative;
+  display: inline-block;
+}
+
+.highlight::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease;
+}
+
+.highlight:hover::after {
+  transform: scaleX(1);
 }
 
 .hero-content h2 {
   font-size: 1.8rem;
-  color: #666;
+  color: var(--text-secondary);
   margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: fadeIn 0.8s ease 0.2s forwards;
 }
 
 .intro-text {
@@ -35,12 +96,17 @@
   line-height: 1.6;
   max-width: 600px;
   margin-bottom: 2rem;
+  color: var(--text-secondary);
+  opacity: 0;
+  animation: fadeIn 0.8s ease 0.4s forwards;
 }
 
 .cta-buttons {
   display: flex;
   gap: 1rem;
   margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeIn 0.8s ease 0.6s forwards;
 }
 
 .btn {
@@ -49,55 +115,161 @@
   font-weight: 600;
   text-decoration: none;
   transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  transition: transform 0.5s ease;
+  z-index: -1;
+}
+
+.btn:hover::before {
+  transform: translateX(100%);
 }
 
 .primary-btn {
-  background-color: #4a90e2;
+  background: linear-gradient(135deg, var(--color-primary), #4361ee);
   color: white;
+  border: none;
+  box-shadow: 0 4px 20px rgba(67, 97, 238, 0.3);
 }
 
 .primary-btn:hover {
-  background-color: #3a7bc8;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 25px rgba(67, 97, 238, 0.4);
 }
 
 .secondary-btn {
   background-color: transparent;
-  color: #4a90e2;
-  border: 2px solid #4a90e2;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+  box-shadow: 0 4px 20px rgba(97, 218, 251, 0.1);
 }
 
 .secondary-btn:hover {
-  background-color: rgba(74, 144, 226, 0.1);
+  background-color: rgba(97, 218, 251, 0.05);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 25px rgba(97, 218, 251, 0.2);
 }
 
 .skills-container {
   margin-top: 2rem;
+  padding: 2rem;
+  background-color: var(--bg-secondary);
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  animation: fadeIn 0.8s ease 0.8s forwards;
 }
 
 .skills-container h3 {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   margin-bottom: 1.5rem;
+  text-align: center;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
 }
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 2rem;
 }
 
 .skill-item {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   text-align: center;
+  padding: 1.5rem 1rem;
+  border-radius: 8px;
+  background-color: var(--bg-tertiary);
+  transition: all 0.3s ease;
+  opacity: 0;
+  animation: fadeIn 0.5s ease forwards;
+  animation-delay: calc(0.1s * var(--i, 0));
+  height: 140px;
+  width: 140px;
+  margin: 0 auto;
 }
 
-.skill-item i {
+.skill-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.skill-item svg {
+  margin-bottom: 1.2rem;
   font-size: 2.5rem;
-  margin-bottom: 0.5rem;
-  color: #4a90e2;
+  color: #61dafb;
+  filter: drop-shadow(0 0 8px rgba(97, 218, 251, 0.4));
+  transition: all 0.3s ease;
 }
 
+.skill-item:hover svg {
+  transform: scale(1.2);
+  color: #a0e8ff;
+}
+
+.skill-item span {
+  font-weight: 500;
+  color: #e1e1e1;
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+}
+
+/* 添加特效图形 */
+.shape {
+  position: absolute;
+  opacity: 0.1;
+  filter: blur(40px);
+  z-index: -1;
+}
+
+.shape-1 {
+  top: 10%;
+  left: 5%;
+  width: 200px;
+  height: 200px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  animation: float 8s ease-in-out infinite;
+}
+
+.shape-2 {
+  bottom: 10%;
+  right: 5%;
+  width: 300px;
+  height: 300px;
+  background: var(--color-secondary);
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  animation: float 10s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(15px, 15px) rotate(5deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+/* 响应式调整 */
 @media (max-width: 768px) {
   .hero-content h1 {
     font-size: 2.5rem;
@@ -112,6 +284,11 @@
   }
   
   .skills-grid {
-    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .shape-1, .shape-2 {
+    opacity: 0.05;
   }
 } 

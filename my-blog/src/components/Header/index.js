@@ -1,8 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { useLanguage } from '../../context/LanguageContext';
+import { useTheme } from '../../context/ThemeContext';
+import { translations } from '../../locales';
+import { FaSun, FaMoon } from 'react-icons/fa';
 import './style.css';
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
+  const { language, toggleLanguage } = useLanguage();
+  const { theme, toggleTheme } = useTheme();
+  const t = translations[language];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,11 +32,24 @@ const Header = () => {
     <header className={`site-header ${scrolled ? 'scrolled' : ''}`}>
       <div className="header-container">
         <div className="logo">
-          <a href="#home">白明的个人博客</a>
+          <Link to="/">{language === 'en' ? "Bai Ming's Blog" : "白明的个人博客"}</Link>
         </div>
         
-        <div className="theme-switch">
-          <i className="fas fa-moon"></i>
+        <nav className="main-nav">
+          <ul>
+            <li><Link to="/">{t.header.home}</Link></li>
+            <li><Link to="/#projects">{t.header.projects}</Link></li>
+            <li><Link to="/#contact">{t.header.contact}</Link></li>
+          </ul>
+        </nav>
+        
+        <div className="header-controls">
+          <div className="theme-switch" onClick={toggleTheme}>
+            {theme === 'dark' ? <FaSun /> : <FaMoon />}
+          </div>
+          <div className="language-switch" onClick={toggleLanguage}>
+            {language === 'en' ? 'EN | 中' : '中 | EN'}
+          </div>
         </div>
       </div>
     </header>

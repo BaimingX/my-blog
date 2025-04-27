@@ -1,43 +1,150 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useLanguage } from '../../context/LanguageContext';
+import { translations } from '../../locales';
 import './style.css';
 
+// 从第三方库导入图标
+import { FaNode, FaReact, FaJava, FaDocker, FaDatabase } from 'react-icons/fa';
+import { SiSpringboot, SiNextdotjs, SiVuedotjs, SiMysql, SiRedis, SiNginx, SiTailwindcss, SiSupabase, SiPrisma, SiOpenai, SiTypescript, SiZod } from 'react-icons/si';
+
 const Home = () => {
+  const skillsRef = useRef(null);
+  const navigate = useNavigate();
+  const { language } = useLanguage();
+  const t = translations[language];
+  
+  useEffect(() => {
+    // 设置技能项的动画延迟
+    if (skillsRef.current) {
+      const skillItems = skillsRef.current.querySelectorAll('.skill-item');
+      skillItems.forEach((item, index) => {
+        item.style.setProperty('--i', index);
+      });
+    }
+    
+    // 添加鼠标移动视差效果
+    const handleMouseMove = (e) => {
+      const shapes = document.querySelectorAll('.shape');
+      const x = e.clientX / window.innerWidth;
+      const y = e.clientY / window.innerHeight;
+      
+      shapes.forEach(shape => {
+        const speed = shape.getAttribute('data-speed');
+        const moveX = (x - 0.5) * speed;
+        const moveY = (y - 0.5) * speed;
+        shape.style.transform = `translate(${moveX}px, ${moveY}px)`;
+      });
+    };
+    
+    window.addEventListener('mousemove', handleMouseMove);
+    
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
+
+  const scrollToProjects = () => {
+    const projectsSection = document.getElementById('projects');
+    if (projectsSection) {
+      projectsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+  
   return (
     <section id="home" className="home-section">
+      {/* 背景元素 */}
+      <div className="grid-background"></div>
+      <div className="shape shape-1" data-speed="30"></div>
+      <div className="shape shape-2" data-speed="20"></div>
+      
       <div className="container">
         <div className="hero-content">
-          <h1>你好，我是<span className="highlight">白明</span></h1>
-          <h2>全栈开发工程师</h2>
+          <h1>{t.home.greeting}<span className="highlight">{t.home.name}</span></h1>
+          <h2>{t.home.title}</h2>
           <p className="intro-text">
-            专注于Web应用开发，热爱技术创新与问题解决。
-            拥有丰富的前后端开发经验，致力于创建高质量、用户友好的应用程序。
+            {t.home.intro}
           </p>
           <div className="cta-buttons">
-            <a href="#projects" className="btn primary-btn">查看我的项目</a>
-            <a href="#contact" className="btn secondary-btn">联系我</a>
+            <button onClick={scrollToProjects} className="btn primary-btn">{t.home.buttons.viewProjects}</button>
+            <button onClick={scrollToContact} className="btn secondary-btn">{t.home.buttons.contact}</button>
           </div>
         </div>
         
-        <div className="skills-container">
-          <h3>技术栈</h3>
+        <div className="skills-container" ref={skillsRef}>
+          <h3>{t.home.skills}</h3>
           <div className="skills-grid">
             <div className="skill-item">
-              <i className="devicon-javascript-plain"></i>
-              <span>JavaScript</span>
-            </div>
-            <div className="skill-item">
-              <i className="devicon-react-original"></i>
+              <FaReact size={40} />
               <span>React</span>
             </div>
             <div className="skill-item">
-              <i className="devicon-nodejs-plain"></i>
+              <SiNextdotjs size={40} />
+              <span>Next.js</span>
+            </div>
+            <div className="skill-item">
+              <SiVuedotjs size={40} />
+              <span>Vue</span>
+            </div>
+            <div className="skill-item">
+              <SiTailwindcss size={40} />
+              <span>Tailwind CSS</span>
+            </div>
+            <div className="skill-item">
+              <SiTypescript size={40} />
+              <span>TypeScript</span>
+            </div>
+            <div className="skill-item">
+              <FaNode size={40} />
               <span>Node.js</span>
             </div>
             <div className="skill-item">
-              <i className="devicon-python-plain"></i>
-              <span>Python</span>
+              <FaJava size={40} />
+              <span>Java</span>
             </div>
-            {/* 你可以根据自己的技能添加更多 */}
+            <div className="skill-item">
+              <SiSpringboot size={40} />
+              <span>Spring Boot</span>
+            </div>
+            <div className="skill-item">
+              <SiMysql size={40} />
+              <span>MySQL</span>
+            </div>
+            <div className="skill-item">
+              <SiRedis size={40} />
+              <span>Redis</span>
+            </div>
+            <div className="skill-item">
+              <SiSupabase size={40} />
+              <span>Supabase</span>
+            </div>
+            <div className="skill-item">
+              <SiPrisma size={40} />
+              <span>Prisma</span>
+            </div>
+            <div className="skill-item">
+              <FaDocker size={40} />
+              <span>Docker</span>
+            </div>
+            <div className="skill-item">
+              <SiNginx size={40} />
+              <span>Nginx</span>
+            </div>
+            <div className="skill-item">
+              <SiOpenai size={40} />
+              <span>AI {language === 'en' ? 'Integration' : '集成'}</span>
+            </div>
+            <div className="skill-item">
+              <FaDatabase size={40} />
+              <span>{language === 'en' ? 'Microservices' : '微服务'}</span>
+            </div>
           </div>
         </div>
       </div>
