@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useLanguage } from '../../context/LanguageContext';
 import { translations } from '../../locales';
 import ecommerceImg from '../../assets/img/ecommerce.png';
+import originappImg from '../../assets/img/originapp.png';
 import whisperingCardsImg from '../../assets/img/whispering-cards.png';
 import { FaGithub, FaExternalLinkAlt, FaInfo } from 'react-icons/fa';
 import './style.css';
@@ -74,15 +75,28 @@ const Projects = () => {
     },
     {
       id: 2,
-      title: language === 'en' ? t.projects.management.title : '企业内部管理系统',
-      description: t.projects.management.description,
-      technologies: ['Vue.js', 'Element UI', 'Spring Boot', 'MySQL'],
-      image: 'projects/management-system.jpg',
-      link: 'https://github.com/yourusername/management-system',
-      detail: '/project/management-system'
+      title: language === 'en' ? 'Microsoft Teams App' : 'Microsoft Teams 培训管理应用',
+      description: language === 'en' ? 
+        'A multi-functional application for training management, attendance tracking, venue inspection, and trainer availability management based on Microsoft Teams platform.' : 
+        '基于Microsoft Teams平台的多功能培训管理应用，实现了培训管理、考勤表管理、场地检查、教练可用性管理等功能。',
+      technologies: ['React', 'Material UI', 'Fluent UI', 'Azure Functions', 'Microsoft Graph API', 'Azure Blob Storage', 'WebSocket', 'PDF Processing'],
+      image: originappImg,
+      link: 'https://github.com/yourusername/teams-training-app',
+      detail: '/project/teams-app'
     },
     {
       id: 3,
+      title: language === 'en' ? 'Teams App Backend System' : 'Teams应用后端系统',
+      description: language === 'en' ? 
+        'The backend system for Microsoft Teams training management application, based on Java Spring Boot, providing API support and data processing services.' : 
+        '基于Java Spring Boot架构的Teams培训管理应用后端系统，为前端应用提供API支持和数据处理服务。',
+      technologies: ['Java 17', 'Spring Boot', 'Spring Security', 'WebSocket', 'MyBatis-Plus', 'Azure Blob Storage', 'JWT', 'iText'],
+      image: originappImg,
+      link: 'https://github.com/yourusername/teams-training-backend',
+      detail: '/project/teams-backend'
+    },
+    {
+      id: 4,
       title: language === 'en' ? t.projects.whisperingCards.title : '呓语之牌',
       description: t.projects.whisperingCards.description,
       technologies: ['Next.js', 'React', 'Tailwind CSS', 'Zustand', 'Supabase', 'Prisma', 'Vercel'],
@@ -90,16 +104,6 @@ const Projects = () => {
       link: 'https://github.com/yourusername/whispering-cards',
       demo: 'https://whispering-cards.vercel.app',
       detail: '/project/whispering-cards'
-    },
-    {
-      id: 4,
-      title: language === 'en' ? t.projects.blog.title : '个人博客系统',
-      description: t.projects.blog.description,
-      technologies: ['Next.js', 'Tailwind CSS', 'Prisma', 'PostgreSQL'],
-      image: 'projects/blog-system.jpg',
-      link: 'https://github.com/yourusername/blog-system',
-      demo: 'https://your-blog.com',
-      detail: '/project/blog-system'
     }
   ];
 
