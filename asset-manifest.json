@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/my-blog/static/css/main.e3782105.css",
-    "main.js": "/my-blog/static/js/main.e336756c.js",
+    "main.js": "/my-blog/static/js/main.f3611a5b.js",
     "static/js/453.53abc377.chunk.js": "/my-blog/static/js/453.53abc377.chunk.js",
     "static/media/ecommerce.png": "/my-blog/static/media/ecommerce.5498e5833f7c942907e6.png",
     "static/media/whispering-cards.png": "/my-blog/static/media/whispering-cards.69e9899269dc3a24ca03.png",
     "static/media/originapp.png": "/my-blog/static/media/originapp.ef28879891fc694f3b9d.png",
     "index.html": "/my-blog/index.html",
     "main.e3782105.css.map": "/my-blog/static/css/main.e3782105.css.map",
-    "main.e336756c.js.map": "/my-blog/static/js/main.e336756c.js.map",
+    "main.f3611a5b.js.map": "/my-blog/static/js/main.f3611a5b.js.map",
     "453.53abc377.chunk.js.map": "/my-blog/static/js/453.53abc377.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e3782105.css",
-    "static/js/main.e336756c.js"
+    "static/js/main.f3611a5b.js"
   ]
 }
