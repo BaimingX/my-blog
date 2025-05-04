@@ -1,16 +1,26 @@
 import React, { useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '../../context/LanguageContext';
 import { translations } from '../../locales';
 import './style.css';
 
 // 从第三方库导入图标
-import { FaNode, FaReact, FaJava, FaDocker, FaDatabase } from 'react-icons/fa';
-import { SiSpringboot, SiNextdotjs, SiVuedotjs, SiMysql, SiRedis, SiNginx, SiTailwindcss, SiSupabase, SiPrisma, SiOpenai, SiTypescript, SiZod } from 'react-icons/si';
+import { FaNode, FaReact, FaJava, FaDocker, FaMicrosoft } from 'react-icons/fa';
+import { 
+  SiSpringboot,
+  SiNextdotjs, 
+  SiVuedotjs, 
+  SiTailwindcss, 
+  SiTypescript, 
+  SiMysql,
+  SiRedis,
+  SiGithubactions,
+  SiPrisma,
+  SiNginx,
+  SiMicrosoftazure
+} from 'react-icons/si';
 
 const Home = () => {
   const skillsRef = useRef(null);
-  const navigate = useNavigate();
   const { language } = useLanguage();
   const t = translations[language];
   
@@ -122,28 +132,28 @@ const Home = () => {
               <span>Redis</span>
             </div>
             <div className="skill-item">
-              <SiSupabase size={40} />
-              <span>Supabase</span>
+              <SiGithubactions size={40} />
+              <span>GitHub</span>
             </div>
             <div className="skill-item">
               <SiPrisma size={40} />
               <span>Prisma</span>
             </div>
             <div className="skill-item">
-              <FaDocker size={40} />
-              <span>Docker</span>
-            </div>
-            <div className="skill-item">
               <SiNginx size={40} />
               <span>Nginx</span>
             </div>
             <div className="skill-item">
-              <SiOpenai size={40} />
-              <span>AI {language === 'en' ? 'Integration' : '集成'}</span>
+              <FaDocker size={40} />
+              <span>Docker</span>
             </div>
             <div className="skill-item">
-              <FaDatabase size={40} />
-              <span>{language === 'en' ? 'Microservices' : '微服务'}</span>
+              <SiMicrosoftazure size={40} />
+              <span>Azure</span>
+            </div>
+            <div className="skill-item">
+              <FaMicrosoft size={40} />
+              <span>Microsoft Graph API</span>
             </div>
           </div>
         </div>

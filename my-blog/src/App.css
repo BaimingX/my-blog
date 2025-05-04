@@ -101,7 +101,9 @@ body {
 
 .card-3d-content {
   backface-visibility: hidden;
-  transform: translateZ(20px);
+  /* 移除 translateZ 以避免点击区域偏移 */
+  /* transform: translateZ(20px); */
+  transform-style: preserve-3d;
 }
 
 /* 动效与互动元素 */

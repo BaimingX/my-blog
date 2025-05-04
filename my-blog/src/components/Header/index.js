@@ -32,14 +32,13 @@ const Header = () => {
     <header className={`site-header ${scrolled ? 'scrolled' : ''}`}>
       <div className="header-container">
         <div className="logo">
-          <Link to="/">{language === 'en' ? "Bai Ming's Blog" : "白明的个人博客"}</Link>
+          <Link to="/">{language === 'en' ? "Baiming's Blog" : "Baiming的个人博客"}</Link>
         </div>
         
         <nav className="main-nav">
           <ul>
             <li><Link to="/">{t.header.home}</Link></li>
-            <li><Link to="/#projects">{t.header.projects}</Link></li>
-            <li><Link to="/#contact">{t.header.contact}</Link></li>
+            <li><Link to="/me-and-ai">{t.header.meAndAi}</Link></li>
           </ul>
         </nav>
         

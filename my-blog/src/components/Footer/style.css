@@ -27,6 +27,7 @@
   margin-bottom: 1.5rem;
   position: relative;
   display: inline-block;
+  color: #222;
 }
 
 .footer-contact h3:after, .footer-social h3:after {
@@ -57,13 +58,17 @@
 }
 
 .contact-item a {
-  color: #333;
+  color: #222;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .contact-item a:hover {
   color: #4a90e2;
+}
+
+.contact-item span {
+  color: #222;
 }
 
 .social-links {
@@ -97,7 +102,11 @@
   padding-top: 2rem;
   border-top: 1px solid #eaeaea;
   text-align: center;
-  color: #777;
+  color: #333;
+}
+
+.footer-bottom p {
+  color: #333;
 }
 
 @media (max-width: 768px) {

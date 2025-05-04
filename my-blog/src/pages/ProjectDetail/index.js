@@ -46,10 +46,6 @@ This project is a multi-functional application based on the Microsoft Teams plat
 - **Azure Blob Storage**: Implements data storage via @azure/storage-blob
 - **SSO Authentication**: Implements single sign-on based on Microsoft Entra ID
 - **WebSocket Service**: Supports real-time data communication
-- **Java Spring Boot**: Core application framework for backend services
-- **Spring Security**: Implements authentication and authorization
-- **Spring WebSocket**: Provides WebSocket real-time communication support
-- **MyBatis-Plus**: Enhanced ORM framework
 
 ## Technical Highlights
 
@@ -65,7 +61,25 @@ This project is a multi-functional application based on the Microsoft Teams plat
 - **Centralized Configuration**: Manages application features and permissions through JSON configuration files
 - **Scalability**: Supports dynamic addition and configuration of new functional modules
 
-### 3. PDF Collaborative Editing System
+### 3. Cloud Storage Integration
+
+- **Serverless Data Storage**: Implements lightweight data management using Azure Blob Storage
+- **Configuration File Management**: Manages user configurations and system settings through cloud storage
+- **File Processing**: Supports document uploading, storage, and processing
+
+### 4. Management Functions
+
+- **Admin Dashboard**: Provides comprehensive management interface supporting user management, permission configuration, and feature enabling/disabling
+- **Dynamic UI Configuration**: Supports online modification of application UI and feature descriptions
+- **User Management**: Supports adding, deleting, and managing users with different roles
+
+### 5. Form Processing and Data Operations
+
+- **Dynamic Form Generation**: Generates interactive forms based on configuration
+- **PDF Generation and Processing**: Supports generating, filling, and signing PDF documents
+- **Data Validation**: Implements client-side data validation logic
+
+### 6. PDF Collaborative Editing System
 
 - **WebSocket Real-Time Collaboration**: Enables multiple users to edit the same PDF document simultaneously
 - **Real-Time Status Synchronization**: Shows other users' editing status in real-time
@@ -73,7 +87,7 @@ This project is a multi-functional application based on the Microsoft Teams plat
 - **UI Feedback Mechanism**: Provides visual cues for collaboration status
 - **Disconnection Recovery Mechanism**: Implements stable connection recovery
 
-### 4. Mobile QR Code Quick Upload System
+### 7. Mobile QR Code Quick Upload System
 
 - **QR Code Generation**: Dynamically generates QR codes containing contextual information
 - **Mobile Adaptation**: Provides upload interface optimized for mobile devices
@@ -81,13 +95,22 @@ This project is a multi-functional application based on the Microsoft Teams plat
 - **Image Optimization**: Automatically compresses and processes uploaded images
 - **Status Synchronization**: Synchronizes upload status across devices
 
-## Core Modules
+### 8. EWP Modular Control System
+
+- **Hierarchical Permission Control**: Implements special permission system based on high-risk training characteristics
+- **Dynamic Folder Browser**: Customizes Azure Blob storage browser
+- **Status Tracking**: Tracks the entire lifecycle of training processes
+- **NOA Document Management**: Manages special certification documents
+- **Multi-Stage Forms**: Supports multi-day training data collection
+
+## In-Depth Development Features
 
 1. **Attendance Sheet Management System**
    - Electronic signature functionality
    - Automatic PDF report generation
    - Real-time data synchronization
    - Breakpoint resume support
+   - Automatic timing and break reminders
 
 2. **Venue Safety Inspection**
    - Structured inspection forms
@@ -101,12 +124,83 @@ This project is a multi-functional application based on the Microsoft Teams plat
    - Automatic assignment suggestions
    - Holiday and workday management
 
-4. **High-Risk Training Management (EWP)**
+4. **Inventory Management**
+   - Equipment tracking
+   - Inventory alerts
+   - Usage recording
+   - Photo evidence uploading
+   - Item request system
+
+5. **High-Risk Training Management (EWP)**
    - Special permission control
    - Safety certification process
    - Training record management
    - Multi-stage form collection
    - Document integrity verification
+
+6. **Administrator Control Panel**
+   - User permission management
+   - Feature configuration
+   - System settings
+   - Data analysis and reporting
+
+7. **PDF Collaborative Editing System**
+   - Real-time multi-user editing
+   - Modification conflict handling
+   - Edit history tracking
+   - Field validation and formatting
+   - Dynamic locking mechanism
+
+8. **Mobile Quick Upload**
+   - QR code scan upload
+   - Direct camera shooting
+   - Batch processing functionality
+   - Offline caching mechanism
+   - Real-time status synchronization
+
+## Tools and Services Used
+
+- **Microsoft Teams Platform**: Provides application hosting and integration environment
+- **Azure Functions**: Implements serverless backend
+- **Azure Blob Storage**: Provides cloud storage solutions
+- **Microsoft Graph API**: Accesses Microsoft 365 user data
+- **Microsoft Entra ID (formerly Azure AD)**: Implements authentication and authorization
+- **Teams Toolkit**: Used for developing and debugging Teams apps
+- **WebSocket Service**: Provides real-time data communication support
+- **PDF Processing Libraries**: Uses pdf-lib, pdfjs-dist for PDF operations
+- **QR Code Generation Library**: Uses qrcode.react for generating QR codes
+
+## Innovative Technical Solutions
+
+### PDF Real-Time Collaborative Editing
+
+The project implements a WebSocket-based PDF real-time collaborative editing system, allowing multiple users to edit the same PDF document simultaneously. The system includes the following features:
+
+1. **Real-Time Data Synchronization**: Implements immediate synchronization of form fields via WebSocket
+2. **User Status Indication**: Shows who is currently editing specific fields
+3. **Dynamic Permission Control**: Automatically assigns editable fields based on user roles
+4. **Disconnection Recovery Mechanism**: Provides automatic reconnection and session recovery
+5. **Conflict Prevention Mechanism**: Avoids conflicts when multiple people edit the same field simultaneously
+
+### QR Code Mobile Upload System
+
+To solve mobile device upload issues, an innovative QR code upload system was developed:
+
+1. **Context Transmission**: QR codes contain contextual information about training, students, etc.
+2. **Mobile-Adapted Interface**: Upload interface optimized for mobile browsers
+3. **Image Processing**: Automatically compresses and adjusts uploaded images
+4. **Cloud Synchronization**: Real-time synchronization of upload status to the management system
+5. **Cross-Device Status Sharing**: Seamless transition between desktop and mobile devices
+
+### EWP High-Risk Training Module
+
+A professional management system developed for high-risk training projects:
+
+1. **Layered File Structure**: Training archives organized by date
+2. **Status JSON Tracking**: Uses JSON files to track training status
+3. **Multi-Stage Forms**: Supports form collection for multi-day training
+4. **Document Integrity Verification**: Automatically checks the completeness of necessary documents
+5. **Permission Isolation**: Ensures only authorized users can access sensitive training content
 
 ## Deployment and Hosting
 
@@ -116,9 +210,142 @@ This project is a multi-functional application based on the Microsoft Teams plat
 
 ## Summary
 
-This project demonstrates how to develop enterprise-level Teams applications using modern technology stacks, combining React frontend, Azure Functions backend, and Microsoft cloud services to create a secure and reliable training management system. The project adopts modular design and role-based access control to provide customized functional experiences for users from different regions and roles. Through integration with Microsoft Graph API and Azure storage services, it achieves deep integration with the Microsoft 365 ecosystem, providing users with a seamless experience.`,
+This project develops enterprise-level Teams applications using modern technology stacks, combining React frontend, Azure Functions backend, and Microsoft cloud services to create a secure and reliable training management system. The project adopts modular design and role-based access control to provide customized functional experiences for users from different regions and roles. Through integration with Microsoft Graph API and Azure storage services, it achieves deep integration with the Microsoft 365 ecosystem, providing users with a seamless experience.
+
+Particularly noteworthy are the innovative solutions in the project, such as PDF real-time collaborative editing, QR code mobile upload, and EWP high-risk training management, which meet the specific needs of training institutions and greatly improve training management efficiency and data accuracy. The modern technology and architecture adopted by the system ensure high availability, scalability, and security, providing a comprehensive solution for enterprise-level training management. `,
+  
+
+   'teams-backend': `
+   # Technical Overview of Teams Application Project
+
+## Project Introduction
+This is a multi-functional backend system for a Microsoft Teams platform application, specifically designed for training institutions. It implements training management, attendance management, venue inspection, coach availability management, and other features. The backend uses Java Spring Boot architecture to provide API support and data processing services for the frontend Teams application.
+
+## Backend Technology Stack
+### Core Framework
+- **Java 17**: Project developed based on Java 17
+- **Spring Boot 2.6.11**: Core application framework
+- **Spring Security**: Authentication and authorization implementation
+- **Spring WebSocket**: Provides WebSocket real-time communication support
+- **MyBatis-Plus 3.5.3**: Enhanced ORM framework
+
+### Storage and Cache
+- **Redis**: Used for caching and session management, utilizing Jedis client
+- **Azure Blob Storage**: Cloud storage solution, integrated through Azure SDK
+
+### Authentication and Security
+- **JWT (Java-JWT 3.11.0)**: Token-based authentication implementation
+- **Spring Security**: Provides security framework and authorization services
+
+### Document Processing
+- **iText 7.1.14**: PDF generation and processing library
+- **Apache Commons**: Utility class collection (Commons Lang, Commons IO, Commons Collections)
+
+### Cloud Service Integration
+- **Microsoft Graph API 5.0.0**: Access to Microsoft 365 data
+- **Azure Identity**: Provides Azure authentication services
+- **Azure SDK**: Azure services integration
+
+### Other Tools
+- **Lombok**: Reduces boilerplate code
+- **Hutool**: Chinese utility package providing various practical utility methods
+- **Jackson**: JSON processing library
+- **WebSocket**: Real-time communication implementation
+
+## Technical Highlights
+### 1. WebSocket Real-time Collaboration System
+The project implements a WebSocket-based real-time collaborative editing system with the following features:
+- **Session Management**: Efficiently manages WebSocket sessions through ConcurrentHashMap
+- **Grouping Mechanism**: Session grouping by PDF file for targeted broadcasting
+- **Real-time State Synchronization**: Supports immediate synchronization of user editing states
+- **Health Check**: Implements PING/PONG mechanism to ensure connection stability
+- **Reconnection**: Supports session recovery and state preservation
+- **Message Type Handling**: Supports multiple message types (identity verification, PDF changes, PDF events, annotations, etc.)
+
+### 2. Azure Blob Storage Integration
+The system deeply integrates Azure Blob Storage services, implementing the following features:
+- **Template Management**: Stores and manages PDF templates
+- **Student Document Management**: Organizes folder structures by student ID
+- **SAS Token Authorization**: Uses Shared Access Signatures for secure access control
+- **File Copying and Processing**: Implements template copying and dynamic file generation
+- **Pre-signed URLs**: Provides secure direct access links for the frontend
+
+### 3. PDF Generation and Processing System
+Uses the iText library to implement powerful PDF processing capabilities:
+- **Dynamic Table Generation**: Dynamically generates tables based on student data
+- **Conditional Styling**: Dynamically adjusts cell styles based on data content (e.g., NYS status highlighted in red)
+- **Regional Adaptation**: Adjusts table structure based on state codes (such as VIC, NSW)
+- **Image Integration**: Supports embedding images in PDFs (such as company logos)
+- **Data Formatting**: Automatically formats and validates data
+
+### 4. Power Automate Integration
+The system seamlessly integrates with Microsoft Power Automate to achieve workflow automation:
+- **Data Push**: Sends data to Power Automate for subsequent processing
+- **Document Upload**: Supports direct PDF document uploads to Power Automate
+- **Trainer Availability Query**: Automatically retrieves trainer SOT lists
+- **Location Information Retrieval**: Real-time retrieval of training location information
+- **Configuration Synchronization**: Supports system configuration retrieval from Power Automate
+
+### 5. Security and Authentication
+Implements comprehensive security mechanisms:
+- **JWT Authentication**: Uses JSON Web Token for stateless authentication
+- **Spring Security**: Provides comprehensive security framework
+- **Role-based Permission Control**: Role-based access control system
+- **Request Validation**: Uses Spring Validation for request data validation
+- **CORS Configuration**: Handles cross-origin resource sharing
+
+## Main Functional Modules
+### 1. Attendance Management
+- Generates standardized attendance PDF forms
+- Supports student attendance status recording
+- Electronic signature and verification
+- Conditional formatting (automatically marks exceptions)
+- Training completion status tracking
+
+### 2. Venue Inspection System
+- Venue information retrieval and management
+- Venue status recording
+- Issue tracking and reporting
+
+### 3. PDF Collaborative Editing
+- Multiple users editing simultaneously
+- Real-time status synchronization
+- Field-level permission control
+- Editing conflict resolution
+- Reconnection mechanism
+
+### 4. Power Automate Integration
+- Data collection and push
+- Automated document processing
+- Trainer scheduling management
+- Notification and reminder services
+
+## System Architecture
+The project adopts a typical Spring Boot MVC architecture, primarily containing the following layers:
+1. **Controller Layer**: Handles HTTP requests, provides RESTful APIs
+2. **Service Layer**: Implements business logic
+3. **Data Access Layer**: Accesses data through Azure Blob Storage and other storage services
+4. **WebSocket Service**: Provides real-time communication functionality
+5. **Security Layer**: Handles authentication and authorization
+6. **Utility Classes**: Provides general functionality support
+
+## Deployment and Runtime Environment
+- **Cloud Platform**: Deployed on Azure cloud services
+- **Runtime**: Java 17 runtime environment
+- **Containerization**: Supports containerized deployment
+- **CI/CD**: Supports automated deployment through scripts
+
+## Summary
+This project demonstrates a complete enterprise-level application backend implementation, integrating modern Java technology stack and Microsoft cloud service ecosystem. The system achieves real-time collaboration through WebSocket, cloud storage through Azure Blob Storage, PDF processing through iText, and seamless integration with Power Automate, providing a comprehensive digital solution for training institutions.
+
+The project's highlights include modular processing of complex business logic, real-time collaboration, cloud storage integration, and document generation and management, providing users with efficient and reliable training management services. The system architecture is well-designed, with scalability and maintainability, suitable for continuous expansion and optimization of future functionality.
+ `,
+
+
     'whispering-cards': `
 # Whispering Cards - Technical Overview
+
+## (Only the creator build deck part and google login are complete at the moment)
 
 ## Project Introduction
 
@@ -324,7 +551,7 @@ This project uses industry-leading technology stacks and architectural design, i
   // 中文版内容
   const markdownContentZh = {
     'teams-app': `
-# Teams应用项目技术概述
+# Teams应用项目概述
 
 ## 项目简介
 
@@ -353,10 +580,6 @@ This project uses industry-leading technology stacks and architectural design, i
 - **Azure Blob Storage**: 通过@azure/storage-blob实现数据存储
 - **SSO认证**: 实现基于Microsoft Entra ID的单点登录
 - **WebSocket服务**: 支持实时数据通信
-- **Java Spring Boot**: 核心应用框架
-- **Spring Security**: 实现认证与授权
-- **Spring WebSocket**: 提供WebSocket实时通信支持
-- **MyBatis-Plus**: 增强的ORM框架
 
 ## 技术亮点
 
@@ -372,15 +595,33 @@ This project uses industry-leading technology stacks and architectural design, i
 - **中心化配置**: 通过JSON配置文件管理应用功能和权限
 - **可扩展性**: 支持动态添加和配置新功能模块
 
-### 3. PDF协作编辑系统
+### 3. 云存储集成
 
-- **WebSocket实时协作**: 实现多用户同时编辑同一PDF文档
+- **无服务器数据存储**: 利用Azure Blob Storage实现轻量级数据管理
+- **配置文件管理**: 通过云存储管理用户配置和系统设置
+- **文件处理**: 支持文档上传、存储和处理
+
+### 4. 管理功能
+
+- **管理控制面板**: 提供全面的管理界面，支持用户管理、权限配置和功能启用/禁用
+- **动态UI配置**: 支持在线修改应用UI和功能描述
+- **用户管理**: 支持添加、删除和管理不同角色的用户
+
+### 5. 表单处理与数据操作
+
+- **动态表单生成**: 根据配置生成交互式表单
+- **PDF生成与处理**: 支持生成、填写和签署PDF文档
+- **数据验证**: 实现客户端数据验证逻辑
+
+### 6. PDF协作编辑系统
+
+- **WebSocket实时协作**: 实现多用户同时编辑PDF文档
 - **实时状态同步**: 实时显示其他用户的编辑状态
 - **字段级权限控制**: 基于用户角色动态控制可编辑字段
 - **UI反馈机制**: 通过视觉提示反馈协作状态
 - **断线重连机制**: 实现稳定的连接恢复功能
 
-### 4. 二维码移动上传系统
+### 7. 移动二维码快速上传系统
 
 - **二维码生成**: 动态生成包含上下文信息的二维码
 - **移动端适配**: 专为移动设备优化的上传界面
@@ -388,13 +629,22 @@ This project uses industry-leading technology stacks and architectural design, i
 - **图像优化**: 自动压缩和处理上传图像
 - **状态同步**: 跨设备同步上传状态
 
-## 核心模块
+### 8. EWP模块化控制系统
+
+- **层级权限控制**: 基于高风险培训特性的特殊权限系统
+- **动态文件夹浏览器**: 自定义Azure Blob存储浏览器
+- **状态追踪**: 培训过程全生命周期追踪
+- **NOA文档管理**: 特殊认证文档的管理功能
+- **多阶段表单**: 支持跨日培训的多阶段数据收集
+
+## 深度开发功能
 
 1. **考勤表管理系统**
    - 电子签名功能
    - 自动生成PDF报告
    - 实时数据同步
    - 断点续传支持
+   - 自动计时与休息提醒
 
 2. **场地安全检查**
    - 结构化检查表单
@@ -408,12 +658,83 @@ This project uses industry-leading technology stacks and architectural design, i
    - 自动分配建议
    - 假期与工作日管理
 
-4. **高风险培训管理(EWP)**
+4. **库存管理**
+   - 设备跟踪
+   - 库存预警
+   - 使用记录
+   - 图片证据上传
+   - 物品请求系统
+
+5. **高风险培训管理(EWP)**
    - 特殊权限控制
    - 安全认证流程
    - 培训记录管理
    - 多阶段表单收集
    - 文档完整性验证
+
+6. **管理员控制面板**
+   - 用户权限管理
+   - 功能配置
+   - 系统设置
+   - 数据分析与报表
+
+7. **PDF协作编辑系统**
+   - 实时多用户编辑
+   - 修改冲突处理
+   - 编辑历史跟踪
+   - 字段验证与格式化
+   - 动态锁定机制
+
+8. **移动端快速上传**
+   - 二维码扫描上传
+   - 相机直接拍摄
+   - 批量处理功能
+   - 离线缓存机制
+   - 状态实时同步
+
+## 使用的工具和服务
+
+- **Microsoft Teams平台**: 提供应用托管和集成环境
+- **Azure Functions**: 实现无服务器后端
+- **Azure Blob Storage**: 提供云存储解决方案
+- **Microsoft Graph API**: 访问Microsoft 365用户数据
+- **Microsoft Entra ID (前Azure AD)**: 实现身份验证和授权
+- **Teams Toolkit**: 用于开发和调试Teams应用
+- **WebSocket服务**: 提供实时数据通信支持
+- **PDF处理库**: pdf-lib、pdfjs-dist用于PDF操作
+- **QR码生成库**: qrcode.react用于生成二维码
+
+## 创新技术方案
+
+### PDF实时协作编辑
+
+项目实现了基于WebSocket的PDF实时协作编辑系统，允许多名用户同时编辑同一PDF文档。系统包含以下特性：
+
+1. **实时数据同步**: 通过WebSocket实现表单字段的即时同步
+2. **用户状态指示**: 显示谁正在编辑特定字段
+3. **权限动态控制**: 根据用户角色自动分配可编辑字段
+4. **断线重连机制**: 自动重连和会话恢复
+5. **防冲突机制**: 避免多人同时编辑同一字段的冲突
+
+### 二维码移动上传系统
+
+为解决移动设备上传问题，开发了创新的二维码上传系统：
+
+1. **上下文传递**: 二维码包含培训、学员等上下文信息
+2. **移动适配界面**: 为手机浏览器优化的上传界面
+3. **图像处理**: 自动压缩和调整上传图像
+4. **云端同步**: 实时同步上传状态到管理系统
+5. **跨设备状态共享**: 在桌面和移动端之间无缝切换
+
+### EWP高风险培训模块
+
+针对高风险培训项目开发的专业管理系统：
+
+1. **分层文件结构**: 基于日期组织的培训档案
+2. **状态JSON追踪**: 使用JSON文件追踪培训状态
+3. **多阶段表单**: 支持跨天培训的表单收集
+4. **文档完整性验证**: 自动检查必要文档的完整性
+5. **权限隔离**: 确保只有授权用户才能访问敏感培训内容
 
 ## 部署和托管
 
@@ -423,9 +744,159 @@ This project uses industry-leading technology stacks and architectural design, i
 
 ## 总结
 
-本项目使用现代化技术栈开发企业级Teams应用，结合了React前端、Azure Functions后端和Microsoft云服务，实现了安全可靠的培训管理系统。项目采用模块化设计和基于角色的访问控制，为不同地区和角色的用户提供了定制化的功能体验。通过集成Microsoft Graph API和Azure存储服务，实现了与Microsoft 365生态系统的深度集成，为用户提供了无缝的使用体验。`,
+本项目使用现代化技术栈开发企业级Teams应用，结合了React前端、Azure Functions后端和Microsoft云服务，实现了安全可靠的培训管理系统。项目采用模块化设计和基于角色的访问控制，为不同地区和角色的用户提供了定制化的功能体验。通过集成Microsoft Graph API和Azure存储服务，实现了与Microsoft 365生态系统的深度集成，为用户提供了无缝的使用体验。
+
+特别值得一提的是项目中的PDF实时协作编辑、二维码移动上传和EWP高风险培训管理等创新解决方案，这些功能满足了培训机构的特定需求，大大提高了培训管理效率和数据准确性。系统采用的现代化技术和架构确保了应用的高可用性、可扩展性和安全性，为企业级培训管理提供了全面的解决方案。
+`,
+
+'teams-backend': `
+# Teams应用项目技术概述
+
+## 项目简介
+
+这是一个基于Microsoft Teams平台的多功能应用后端系统，专为培训机构设计，实现了培训管理、考勤表管理、场地检查、教练可用性管理等功能。后端采用Java Spring Boot架构，为前端Teams应用提供API支持和数据处理服务。
+
+## 后端技术栈
+
+### 核心框架
+- **Java 17**: 项目基于Java 17开发
+- **Spring Boot 2.6.11**: 核心应用框架
+- **Spring Security**: 实现认证与授权
+- **Spring WebSocket**: 提供WebSocket实时通信支持
+- **MyBatis-Plus 3.5.3**: 增强的ORM框架
+
+### 存储与缓存
+- **Redis**: 用于缓存和会话管理，使用Jedis客户端
+- **Azure Blob Storage**: 云存储解决方案，通过Azure SDK集成
+
+### 认证与安全
+- **JWT (Java-JWT 3.11.0)**: 实现基于令牌的认证
+- **Spring Security**: 提供安全框架和授权服务
+
+### 文档处理
+- **iText 7.1.14**: PDF生成和处理库
+- **Apache Commons**: 工具类集合（Commons Lang, Commons IO, Commons Collections）
+
+### 云服务集成
+- **Microsoft Graph API 5.0.0**: 访问Microsoft 365数据
+- **Azure Identity**: 提供Azure认证服务
+- **Azure SDK**: 集成Azure服务
+
+### 其他工具
+- **Lombok**: 减少样板代码
+- **Hutool**: 国产工具包，提供各种实用工具方法
+- **Jackson**: JSON处理库
+- **WebSocket**: 实现实时通信
+
+## 技术亮点
+
+### 1. WebSocket实时协作系统
+
+项目实现了基于WebSocket的实时协作编辑系统，具有以下特点：
+
+- **会话管理**: 通过ConcurrentHashMap高效管理WebSocket会话
+- **分组机制**: 按PDF文件进行会话分组，实现针对性广播
+- **实时状态同步**: 支持用户编辑状态的即时同步
+- **健康检查**: 实现PING/PONG机制确保连接稳定性
+- **断线重连**: 支持会话恢复和状态保持
+- **消息类型处理**: 支持多种消息类型（身份识别、PDF变更、PDF事件、注释等）
+
+### 2. Azure Blob Storage集成
+
+系统深度集成了Azure Blob Storage服务，实现以下功能：
+
+- **模板管理**: 存储和管理PDF模板
+- **学生文档管理**: 按学生ID组织文件夹结构
+- **SAS令牌授权**: 使用共享访问签名实现安全访问控制
+- **文件复制与处理**: 实现模板复制和动态文件生成
+- **预签名URL**: 为前端提供安全的直接访问链接
+
+### 3. PDF生成与处理系统
+
+使用iText库实现了强大的PDF处理功能：
+
+- **动态表格生成**: 根据学生数据动态生成表格
+- **条件样式**: 根据数据内容动态调整单元格样式（如NYS状态标红）
+- **区域化适配**: 根据州代码（如VIC、NSW）调整表格结构
+- **图像集成**: 支持在PDF中嵌入图像（如公司Logo）
+- **数据格式化**: 自动格式化和验证数据
+
+### 4. Power Automate集成
+
+系统与Microsoft Power Automate无缝集成，实现工作流自动化：
+
+- **数据推送**: 将数据发送至Power Automate进行后续处理
+- **文档上传**: 支持PDF文档直接上传至Power Automate
+- **培训师可用性查询**: 自动获取培训师SOT列表
+- **位置信息获取**: 实时获取培训地点信息
+- **配置同步**: 支持从Power Automate获取系统配置
+
+### 5. 安全与认证
+
+实现了完善的安全机制：
+
+- **JWT认证**: 使用JSON Web Token实现无状态认证
+- **Spring Security**: 提供全面的安全框架
+- **角色权限控制**: 基于角色的访问控制系统
+- **请求验证**: 使用Spring Validation进行请求数据验证
+- **CORS配置**: 处理跨域资源共享
+
+## 主要功能模块
+
+### 1. 考勤表管理
+- 生成规范化考勤表PDF
+- 支持学生出勤状态记录
+- 电子签名与验证
+- 条件格式化（自动标记异常）
+- 培训完成状态追踪
+
+### 2. 场地检查系统
+- 场地信息获取与管理
+- 场地状态记录
+- 问题追踪与报告
+
+### 3. PDF协作编辑
+- 多用户同时编辑
+- 实时状态同步
+- 字段级权限控制
+- 编辑冲突处理
+- 断线重连机制
+
+### 4. Power Automate集成
+- 数据收集与推送
+- 文档自动化处理
+- 培训师排期管理
+- 通知与提醒服务
+
+## 系统架构
+
+项目采用典型的Spring Boot MVC架构，主要包含以下层次：
+
+1. **控制器层(Controller)**: 处理HTTP请求，提供RESTful API
+2. **服务层(Service)**: 实现业务逻辑
+3. **数据访问层**: 通过Azure Blob Storage和其他存储服务访问数据
+4. **WebSocket服务**: 提供实时通信功能
+5. **安全层**: 处理认证和授权
+6. **工具类**: 提供通用功能支持
+
+## 部署与运行环境
+
+- **云平台**: 部署于Azure云服务
+- **运行时**: Java 17运行环境
+- **容器化**: 支持容器化部署
+- **CI/CD**: 通过脚本支持自动部署
+
+## 总结
+
+该项目展示了一个完整的企业级应用后端实现，集成了现代化的Java技术栈和Microsoft云服务生态系统。系统通过WebSocket实现实时协作，通过Azure Blob Storage实现云存储，通过iText实现PDF处理，并与Power Automate无缝集成，为培训机构提供了全面的数字化解决方案。
+
+项目的亮点在于实现了复杂业务逻辑的模块化处理、实时协作、云存储集成以及文档生成与管理，为用户提供了高效、可靠的培训管理服务。系统架构设计良好，具有可扩展性和可维护性，适合未来功能的持续扩展和优化。 
+`,
+
     'whispering-cards': `
 # 呓语之牌 (Whispering Cards) - 技术栈概述
+
+## (目前只完成创作者建立卡牌部分和google登陆)
 
 ## 项目简介
 

@@ -28,6 +28,8 @@
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 2rem;
   margin-top: 2rem;
+
+  perspective: 1000px; 
 }
 
 .project-card {
@@ -37,8 +39,8 @@
   box-shadow: var(--card-shadow);
   height: 100%;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  transform-style: preserve-3d;
-  perspective: 1000px;
+  position: relative;
+  
 }
 
 .project-card-inner {
@@ -46,6 +48,9 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  transition: transform .3s ease;
+  transform-style: preserve-3d;  
+  pointer-events: none;
 }
 
 .project-image {
@@ -149,11 +154,15 @@
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
+  position: relative;
+  z-index: 10;
+  margin-top: auto;
 }
 
 .project-link {
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   color: var(--text-primary);
   text-decoration: none;
@@ -162,12 +171,30 @@
   background-color: rgba(255, 255, 255, 0.05);
   transition: all 0.3s ease;
   font-size: 0.9rem;
+  position: relative;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  user-select: none;
+  pointer-events: auto;
+  isolation: isolate;
 }
 
 .project-link:hover {
   background-color: var(--color-primary);
   color: white;
   transform: translateY(-3px);
+}
+
+.project-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 6px;
+  z-index: -1;
 }
 
 .details-link {
@@ -178,6 +205,26 @@
 .details-link:hover {
   background-color: var(--color-primary);
   color: white;
+}
+
+.project-link.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: rgba(150, 150, 150, 0.15);
+  color: var(--text-secondary);
+  pointer-events: none;
+}
+
+.project-link.disabled:hover {
+  background-color: rgba(150, 150, 150, 0.15);
+  color: var(--text-secondary);
+  transform: none;
+}
+
+.project-link.disabled::after {
+  content: '(Private)';
+  margin-left: 4px;
+  font-size: 0.8rem;
 }
 
 @media (max-width: 768px) {
@@ -201,4 +248,13 @@
     font-size: 0.8rem;
     padding: 6px 10px;
   }
+
+  .project-link,
+.details-link,
+.project-image img,
+.project-title,
+.project-description,
+.project-tech {
+  pointer-events: auto;
+}
 } 

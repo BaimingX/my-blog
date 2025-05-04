@@ -5,7 +5,7 @@ import { translations } from '../../locales';
 import ecommerceImg from '../../assets/img/ecommerce.png';
 import originappImg from '../../assets/img/originapp.png';
 import whisperingCardsImg from '../../assets/img/whispering-cards.png';
-import { FaGithub, FaExternalLinkAlt, FaInfo } from 'react-icons/fa';
+import { FaGithub, FaExternalLinkAlt, FaInfo, FaLock } from 'react-icons/fa';
 import './style.css';
 
 const Projects = () => {
@@ -24,29 +24,24 @@ const Projects = () => {
       
       // 获取所有卡片并应用3D效果
       const cards = document.querySelectorAll('.project-card');
-      cards.forEach(card => {
-        const rect = card.getBoundingClientRect();
-        const cardCenterX = rect.left + rect.width / 2;
-        const cardCenterY = rect.top + rect.height / 2;
-        
-        // 计算鼠标位置与卡片中心的相对位置
-        const xOffset = (e.clientX - cardCenterX) / 25;
-        const yOffset = (e.clientY - cardCenterY) / 25;
-        
-        // 判断鼠标是否在卡片附近
-        const distance = Math.sqrt(
-          Math.pow(e.clientX - cardCenterX, 2) + 
-          Math.pow(e.clientY - cardCenterY, 2)
-        );
-        
-        if (distance < 400) {
-          // 鼠标在卡片附近，应用3D效果
-          card.style.transform = `perspective(1000px) rotateY(${-xOffset}deg) rotateX(${yOffset}deg) scale(1.02)`;
-        } else {
-          // 鼠标远离卡片，恢复正常状态
-          card.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1)';
-        }
-      });
+
+        cards.forEach(card => {
+          const inner = card.querySelector('.project-card-inner');
+          const rect = card.getBoundingClientRect();
+          const cardCenterX = rect.left + rect.width / 2;
+          const cardCenterY = rect.top + rect.height / 2;
+
+          const xOffset = (e.clientX - cardCenterX) / 25;
+          const yOffset = (e.clientY - cardCenterY) / 25;
+
+          const distance = Math.hypot(e.clientX - cardCenterX, e.clientY - cardCenterY);
+          if (distance < 400) {
+            inner.style.transform = `rotateY(${-xOffset}deg) rotateX(${yOffset}deg) scale(1.02)`;
+          } else {
+            inner.style.transform = 'rotateY(0deg) rotateX(0deg) scale(1)';
+          }
+        });
+
     };
     
     // 添加鼠标移动事件监听器
@@ -65,12 +60,12 @@ const Projects = () => {
   const projectsData = [
     {
       id: 1,
-      title: language === 'en' ? t.projects.ecommerce.title : '电商平台开发',
+      title: language === 'en' ? t.projects.ecommerce.title : 'AusCoolStuff 电商网站',
       description: t.projects.ecommerce.description,
       technologies: ['Next.js', 'React', 'TypeScript', 'Spring Boot', 'MySQL', 'Redis', 'Docker', 'Nginx'],
       image: ecommerceImg,
-      link: 'https://github.com/yourusername/ecommerce-project',
-      demo: 'https://ecommerce-demo.yourdomain.com',
+      link: 'https://github.com/BaimingX/E-commerce',
+      demo: 'https://auscoolstuff.com.au',
       detail: '/project/ecommerce'
     },
     {
@@ -81,7 +76,7 @@ const Projects = () => {
         '基于Microsoft Teams平台的多功能培训管理应用，实现了培训管理、考勤表管理、场地检查、教练可用性管理等功能。',
       technologies: ['React', 'Material UI', 'Fluent UI', 'Azure Functions', 'Microsoft Graph API', 'Azure Blob Storage', 'WebSocket', 'PDF Processing'],
       image: originappImg,
-      link: 'https://github.com/yourusername/teams-training-app',
+      isCompanyProject: true, // 标记为公司项目
       detail: '/project/teams-app'
     },
     {
@@ -92,7 +87,7 @@ const Projects = () => {
         '基于Java Spring Boot架构的Teams培训管理应用后端系统，为前端应用提供API支持和数据处理服务。',
       technologies: ['Java 17', 'Spring Boot', 'Spring Security', 'WebSocket', 'MyBatis-Plus', 'Azure Blob Storage', 'JWT', 'iText'],
       image: originappImg,
-      link: 'https://github.com/yourusername/teams-training-backend',
+      isCompanyProject: true, // 标记为公司项目
       detail: '/project/teams-backend'
     },
     {
@@ -101,7 +96,7 @@ const Projects = () => {
       description: t.projects.whisperingCards.description,
       technologies: ['Next.js', 'React', 'Tailwind CSS', 'Zustand', 'Supabase', 'Prisma', 'Vercel'],
       image: whisperingCardsImg,
-      link: 'https://github.com/yourusername/whispering-cards',
+      link: 'https://github.com/BaimingX/whispering-cards',
       demo: 'https://whispering-cards.vercel.app',
       detail: '/project/whispering-cards'
     }
@@ -141,7 +136,11 @@ const Projects = () => {
                   </div>
                   
                   <div className="project-links">
-                    {project.link && (
+                    {project.isCompanyProject ? (
+                      <div className="project-link disabled">
+                        <FaLock /> <span>{t.projects.buttons.viewCode}</span>
+                      </div>
+                    ) : project.link && (
                       <a 
                         href={project.link} 
                         target="_blank" 

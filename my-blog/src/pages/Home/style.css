@@ -63,6 +63,10 @@
 .highlight {
   position: relative;
   display: inline-block;
+  color: var(--color-primary);
+  -webkit-text-fill-color: var(--color-primary);
+  text-fill-color: var(--color-primary);
+  text-shadow: 0 0 10px rgba(97, 218, 251, 0.3);
 }
 
 .highlight::after {

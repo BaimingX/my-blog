@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Projects from './pages/Projects';
 import ProjectDetail from './pages/ProjectDetail';
+import MeAndAi from './pages/MeAndAi';
 import Footer from './components/Footer';
 import Particles from './components/Particles';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -47,7 +48,7 @@ function App() {
           <span className="circle"></span>
         </div>
         <h2 className="loader-text">
-          {language === 'en' ? "Bai Ming's Personal Blog" : "白明的个人博客"}
+          {language === 'en' ? "Baiming's Personal Blog" : "Baiming's Personal Blog"}
         </h2>
       </div>
     );
@@ -69,6 +70,7 @@ function App() {
         <main className="main-content">
           <Routes>
             <Route path="/project/:id" element={<ProjectDetail />} />
+            <Route path="/me-and-ai" element={<MeAndAi />} />
             <Route path="/" element={
               <>
                 <Home />
